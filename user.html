@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Portal</title>
+    <link rel="stylesheet" href="user.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h2><u><i>Admin Portal</i></u></h2>
+        <br>
+        <a href="admin.html" class="Active">🏠 Dashboard</a>
+        <a href="user.html">👥 User Management</a>
+        <a href="course.html">📚 Course Management</a>
+        <a href="#">⚙️ System Stteings</a>
+        <a href="index.html">🚪 Sign Out</a>
+      </div>
+
+      <div class="main">
+        <header>
+          <h1>Users</h1>
+        </header>
+        <div class="top-bar">
+          <div class="search-filters">
+            <input type="text" placeholder="Search users..." />
+            <div class="filter-container">
+              <button class="filter-button" id="filter-toggle">Filters</button>
+              <div class="filter-dropdown" id="filter-dropdown">
+                <label>
+                  <span>Semester:</span>
+                  <select id="semester-filter">
+                    <option value="">All</option>
+                    <option value="1">1st Semester</option>
+                    <option value="2">2nd Semester</option>
+                    <option value="3">3rd Semester</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Year:</span>
+                  <select id="year-filter">
+                    <option value="">All</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                  </select>
+                </label>
+                <button id="apply-filters">Apply Filters</button>
+              </div>
+            </div>
+          </div>
+          <button class="add-user-btn">Add User</button>
+        </div>
+
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Last Login</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-semester="1" data-year="2025">
+              <td>
+                John Doe <br />
+                <small>john.doe@example.com</small>
+              </td>
+              <td>Student</td>
+              <td><span class="status-active">Active</span></td>
+              <td>2 hours ago</td>
+              <td>
+                <span
+                  class="action-btn"
+                  onclick="redirectToEmail('john.doe@example.com')"
+                  >✉️</span
+                >
+              </td>
+            </tr>
+            <tr data-semester="2" data-year="2024">
+              <td>
+                Jane Smith <br />
+                <small>jane.smith@example.com</small>
+              </td>
+              <td>Teacher</td>
+              <td><span class="status-active">Active</span></td>
+              <td>1 day ago</td>
+              <td>
+                <span
+                  class="action-btn"
+                  onclick="redirectToEmail('jane.smith@example.com')"
+                  >✉️</span
+                >
+              </td>
+            </tr>
+            <tr data-semester="3" data-year="2023">
+              <td>
+                Mike Johnson <br />
+                <small>mike.j@example.com</small>
+              </td>
+              <td>Student</td>
+              <td><span class="status-inactive">Inactive</span></td>
+              <td>5 days ago</td>
+              <td>
+                <span
+                  class="action-btn"
+                  onclick="redirectToEmail('mike.j@example.com')"
+                  >✉️</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const filterToggle = document.getElementById("filter-toggle");
+      const filterDropdown = document.getElementById("filter-dropdown");
+
+      filterToggle.addEventListener("click", () => {
+        filterDropdown.style.display =
+          filterDropdown.style.display === "block" ? "none" : "block";
+      });
+
+      document.getElementById("apply-filters").addEventListener("click", () => {
+        const semesterFilter = document.getElementById("semester-filter").value;
+        const yearFilter = document.getElementById("year-filter").value;
+
+        const rows = document.querySelectorAll(".user-table tbody tr");
+
+        rows.forEach((row) => {
+          const semester = row.getAttribute("data-semester");
+          const year = row.getAttribute("data-year");
+
+          const matchesSemester =
+            !semesterFilter || semester === semesterFilter;
+          const matchesYear = !yearFilter || year === yearFilter;
+
+          row.style.display = matchesSemester && matchesYear ? "" : "none";
+        });
+
+        filterDropdown.style.display = "none";
+      });
+
+      function redirectToEmail(email) {
+        window.location.href = `mailto:${email}`;
+      }
+    </script>
+  </body>
+</html>

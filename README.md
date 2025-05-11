@@ -1,7 +1,6 @@
 # 🧭 Progress Path – Academic Transparency, Made Simple
 A Smart, Intuitive Student-Teacher Portal for managing marks, assignments, study materials, and academic communication in real-time.
 
-
 ## 📋 Table of Contents
 - [Overview](#-overview)
 - [Key Objectives](#-key-objectives)
@@ -19,7 +18,7 @@ A Smart, Intuitive Student-Teacher Portal for managing marks, assignments, study
 
 ## 🔍 Overview
 
-Progress Path is a modular web application designed to streamline academic workflows between students and teachers. Built with a responsive UI and secure backend, it empowers students to monitor their continuous assessment progress, while enabling teachers to update marks, assignments, and resources effortlessly.
+Progress Path is a modular web application designed to streamline academic workflows between students and teachers. Built with a responsive UI and secure backend, it empowers students to monitor their continuous assessment progress, while enabling teachers and administrators to update marks, assignments, and resources effortlessly.
 
 ## 🎯 Key Objectives
 
@@ -33,7 +32,7 @@ Progress Path is a modular web application designed to streamline academic workf
 - **View marks** (graphical & tabular view)
 - **Upload assignments**
 - **Download study material**
-- **Access faculty contacts, syllabus**
+- **Access faculty contacts and syllabus**
 
 ### 👩‍🏫 Teacher Portal
 - **Upload marks**
@@ -54,7 +53,7 @@ Progress Path is a modular web application designed to streamline academic workf
 | Frontend        | HTML, CSS, JavaScript                 |
 | Backend         | Node.js, Express.js                   |
 | Database        | MySQL                                 |
-| UI Library      | Bootstrap                             |
+| UI Library      | Bootstrap, Material-UI                |
 | Auth            | JWT, Google OAuth 2.0                 |
 | File Handling   | Local storage (potential Cloudinary or AWS S3) |
 | Email           | Nodemailer (SMTP)                     |
@@ -73,127 +72,118 @@ Progress Path is a modular web application designed to streamline academic workf
 
 ### 🎓 Student APIs
 
-| Method | Endpoint                             | Description                                        |
-| ------ | ------------------------------------ | -------------------------------------------------- |
-| GET    | `/student`                         | Get student profile, credit points, performance graph |
-| GET    | `/student/notifications`           | Get student notifications                          |
-| POST   | `/student/change-password`         | Student password change                           |
-| GET    | `/acad`                            | Student academic record (courses + marks)         |
-| GET    | `/studentstudy`                    | Get recent and all study materials & assignments  |
-| POST   | `/uploadStudentAssignment`         | Upload an assignment as a student                 |
+| Method | Endpoint                             | Description                                         |
+| ------ | ------------------------------------ | --------------------------------------------------- |
+| GET    | `/student`                          | Get student profile, credit points, performance graph |
+| GET    | `/student/notifications`            | Get student notifications                           |
+| POST   | `/student/change-password`          | Student password change                             |
+| GET    | `/acad`                             | Student academic record (courses + marks)           |
+| GET    | `/studentstudy`                     | Get recent and all study materials & assignments    |
+| POST   | `/uploadStudentAssignment`          | Upload an assignment as a student                   |
 
 ### 👨‍🏫 Teacher APIs
 
-| Method | Endpoint                                  | Description                                               |
-| ------ | ----------------------------------------- | --------------------------------------------------------- |
-| GET    | `/teacher`                              | Get teacher dashboard info                                |
-| POST   | `/teacher/change-password`              | Teacher password change                                   |
-| GET    | `/teacherstudy`                         | Get teacher’s uploaded study materials and assignments    |
-| GET    | `/teacherclasses`                       | Get classes + students count assigned to the teacher      |
-| GET    | `/teacher-lecture/:id`                    | Detailed teacher lecture and class info                   |
-| POST   | `/addClass`                             | Assign class to a teacher                                 |
-| POST   | `/uploadTeacherSubject`                 | Bulk upload class assignments (via Excel)                 |
-| DELETE | `/deletelectureclass`                   | Delete a teacher's assigned class                         |
+| Method | Endpoint                                 | Description                                               |
+| ------ | ---------------------------------------- | --------------------------------------------------------- |
+| GET    | `/teacher`                               | Get teacher dashboard info                                |
+| POST   | `/teacher/change-password`               | Teacher password change                                  |
+| GET    | `/teacherstudy`                          | Get teacher’s uploaded study materials and assignments    |
+| GET    | `/teacherclasses`                        | Get classes + student counts assigned to the teacher      |
+| GET    | `/teacher-lecture/:id`                   | Detailed teacher lecture and class info                   |
+| POST   | `/addClass`                              | Assign class to a teacher                                 |
+| POST   | `/uploadTeacherSubject`                  | Bulk upload class assignments (via Excel)                 |
+| DELETE | `/deletelectureclass`                    | Delete a teacher's assigned class                         |
 
 ### 📝 Marks & Assignment Evaluation
 
-| Method | Endpoint                                                               | Description                          |
-| ------ | ---------------------------------------------------------------------- | ------------------------------------ |
-| GET    | `/students/:teacher_id/:subject_id/:section_name/:semester`             | Fetch student list with marks        |
-| POST   | `/savemarks`                                                           | Save or update student marks         |
-| GET    | `/studentSubmissions`                                                  | Get student assignment submissions   |
+| Method | Endpoint                                                                 | Description                       |
+| ------ | ------------------------------------------------------------------------ | --------------------------------- |
+| GET    | `/students/:teacher_id/:subject_id/:section_name/:semester`             | Fetch student list with marks     |
+| POST   | `/savemarks`                                                            | Save or update student marks      |
+| GET    | `/studentSubmissions`                                                   | Get student assignment submissions|
 
 ### 📘 Study Material & Assignment Upload
 
-| Method | Endpoint                        | Description                              |
-| ------ | ------------------------------- | ---------------------------------------- |
-| POST   | `/upload-study-material`         | Upload study material as teacher          |
-| POST   | `/upload-assignment`            | Upload assignment as teacher               |
+| Method | Endpoint                  | Description                           |
+| ------ | ------------------------- | ------------------------------------- |
+| POST   | `/upload-study-material`  | Upload study material as teacher      |
+| POST   | `/upload-assignment`      | Upload assignment as teacher          |
 
 ### 🧑‍💼 Admin Dashboard
 
-| Method | Endpoint                 | Description                                 |
-| ------ | ------------------------ | ------------------------------------------- |
-| GET    | `/admindashboard`        | Get admin dashboard stats                   |
-| GET    | `/getDropdownData`       | Get course/year/section options             |
-| GET    | `/getGraphData`          | Get graph data for selected class           |
-| GET    | `/getStudents`           | Get student performance list                |
+| Method | Endpoint                 | Description                        |
+| ------ | ------------------------ | ---------------------------------- |
+| GET    | `/admindashboard`        | Get admin dashboard stats          |
+| GET    | `/getDropdownData`       | Get course/year/section options    |
+| GET    | `/getGraphData`          | Get graph data for selected class  |
+| GET    | `/getStudents`           | Get student performance list       |
 
 ### 📚 Subject Management
 
-| Method | Endpoint                          | Description                              |
-| ------ | --------------------------------- | ---------------------------------------- |
-| GET    | `/subjects`                       | Get all subjects                         |
-| POST   | `/addSubject`                     | Add new subject                          |
-| DELETE | `/deleteSubject/:subject_id`       | Delete a subject                         |
-| GET    | `/getSubjectTeachers`             | Get teachers teaching a subject          |
+| Method | Endpoint                          | Description                    |
+| ------ | --------------------------------- | ------------------------------ |
+| GET    | `/subjects`                       | Get all subjects               |
+| POST   | `/addSubject`                     | Add new subject                |
+| DELETE | `/deleteSubject/:subject_id`      | Delete a subject               |
+| GET    | `/getSubjectTeachers`             | Get teachers teaching a subject|
 
 ### 👨‍🏫 Teacher Management
 
-| Method | Endpoint                      | Description                                   |
-| ------ | ----------------------------- | --------------------------------------------- |
-| GET    | `/teachers`                   | Get all teachers                              |
-| POST   | `/addTeacher`                 | Add new teacher                               |
-| POST   | `/uploadTeachers`             | Bulk upload teachers via Excel                |
-| DELETE | `/deleteTeacher/:id`          | Delete a teacher                              |
+| Method | Endpoint                       | Description                          |
+| ------ | ------------------------------ | ------------------------------------ |
+| GET    | `/teachers`                    | Get all teachers                     |
+| POST   | `/addTeacher`                  | Add new teacher                      |
+| POST   | `/uploadTeachers`              | Bulk upload teachers via Excel       |
+| DELETE | `/deleteTeacher/:id`           | Delete a teacher                     |
 
 ### 🏫 Course & Section Management
 
-| Method | Endpoint                 | Description                                         |
-| ------ | ------------------------ | --------------------------------------------------- |
-| GET    | `/courses`               | Get distinct courses                                |
-| POST   | `/addCourse`             | Add a new course + section                          |
-| DELETE | `/deleteCourse/:name`      | Delete a course                                   |
-| GET    | `/students`              | Get students by course + year                        |
+| Method | Endpoint                     | Description                                |
+| ------ | ---------------------------- | ------------------------------------------ |
+| GET    | `/courses`                   | Get distinct courses                       |
+| POST   | `/addCourse`                 | Add a new course + section                 |
+| DELETE | `/deleteCourse/:name`        | Delete a course                            |
+| GET    | `/students`                  | Get students by course + year              |
 
 ## 📂 Project Structure
 
-progress-path/  
-├── client/ # Frontend HTML, CSS, and images  
-│   ├── assets/  
-│   │   └── images/ # Project images (e.g., logos, photos)  
-│   ├── styles/ # All CSS files  
-│   └── pages/ # All HTML pages  
-├── server/ # Backend logic  
-│   ├── server.js # Main server file  
-│   └── Creds/ # Credentials folder (e.g., email)  
-├── node_modules/ # Installed dependencies  
-├── package.json # Project metadata and dependencies  
-├── package-lock.json # Dependency versions  
-├── .env # Environment variables (if used)  
-├── README.md # Project description  
-└── demo.mp4 # Original demo video file (now replaced)
+```
+progress-path/
+├── client/            # Frontend HTML, CSS, and images
+│   ├── assets/        # Project images and static resources
+│   ├── styles/        # All CSS/SCSS files
+│   └── pages/         # HTML pages for student, teacher, admin
+├── server/            # Backend logic
+│   ├── server.js      # Main server file
+│   └── Creds/         # Credentials (e.g. email configs)
+├── node_modules/      # Installed dependencies
+├── package.json       # Project metadata and dependencies
+├── package-lock.json  # Dependency versions
+├── .env               # Environment variables
+├── README.md          # Project description (this file)
+└── demo.mp4           # Original demo video file
+```
 
-... (truncated for brevity)
-
----
 ## ⚙️ Installation & Setup
 
 ### 📦 Prerequisites
-Make sure the following tools are installed on your Oracle VM:
-
-- [Node.js (LTS)](https://nodejs.org/)
-- [MySQL Server](https://dev.mysql.com/downloads/mysql/)
-- [Git (optional)](https://git-scm.com/)
-- [Postman](https://www.postman.com/) – for API testing
-
----
-
+- Node.js (LTS)
+- MySQL Server
+- Git (optional)
+- Postman (for API testing)
 
 ### 🗄️ Step 1: Set Up the MySQL Database
-
-1. Open **MySQL Workbench** or the **Command Line**.
-2. Run the following SQL command to create the database:
+Open MySQL Workbench or the Command Line.
+Run the following SQL command to create the database:
+CREATE DATABASE student_portal;
 
 ```sql
 CREATE DATABASE student_portal;
-
-(Optional: If you have an SQL schema, import it to populate your database.)
+-- (Optional) Import schema if provided.
+```
 
 ### 📝 Step 2: Create `.env` File
-
-In the root folder (`C:\\StudentPortal\\`), create a `.env` file with the following configuration:
-
+In the project root, create a `.env`:
 ```env
 PORT=5000
 DB_HOST=localhost
@@ -206,151 +196,83 @@ EMAIL_PASS=your_email_password
 ```
 
 ### 📥 Step 3: Install Backend Dependencies
-
-1. Open **Command Prompt** on your system.
-2. Navigate to the server folder:
-
-   ```bash
-   cd C:\StudentPortal\server
-    npm install express mysql dotenv body-parser cors nodemailer multer
+```bash
+cd server
+npm install express mysql dotenv body-parser cors nodemailer multer
+```
 
 ### ▶️ Step 4: Start the Backend Server
+```bash
+node server.js
+# Server runs at http://localhost:5000/
+```
 
-  1. In the same **Command Prompt** terminal, run the following command to start the backend server:
-
-   ```bash
-   node server.js
-    The server will start at:
-    http://localhost:5000/
-    
 ### 🌐 Step 5: Open the Frontend
+Open the HTML files in `client/pages/` directly in your browser.
 
-1. Navigate to the frontend pages in **File Explorer**:
-
-   - `C:\\StudentPortal\\client\\pages\\student.html`
-   - `C:\\StudentPortal\\client\\pages\\teacher.html`
-
-2. Alternatively, you can open these files directly in your browser by typing the path in the browser's address bar or by double-clicking the `.html` files.
-
----
 ## 🌐 Deployment & Maintenance
 
-### 📦 Deployment (Oracle VM - Windows)
-
-#### 1. Transfer Project Files
-
-- Copy the complete project folder (`StudentPortal/`) to your **Oracle VM** (via RDP, FTP, or shared folder).
-
-#### 2. Install Dependencies
-
-- Ensure that **Node.js**, **MySQL**, and **npm** are installed on your VM.
-  
-- Once installed, run the following commands to install the required dependencies:
-
-   ```bash
-   cd C:\\StudentPortal\\server
-   npm install
-#### 3. Start MySQL Server
-
-1. Open **MySQL Workbench** or start the **MySQL service** from the **Services** panel in Windows.
-2. Ensure that the **student_portal** database exists and is accessible. If you haven't created the database yet, refer to **Step 1: Set Up the MySQL Database** to create it.
-
-#### 4. Set Environment Variables
-
-1. Verify that the `.env` file exists in the root of your project directory (`C:\\StudentPortal\\`).
-2. Ensure that the `.env` file contains valid credentials for the following:
-   - **Database**: Database credentials such as `DB_HOST`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME`.
-   - **Email Configuration**: Ensure that the `EMAIL_USER` and `EMAIL_PASS` are set correctly for your email account used for sending emails.
-   - **JWT Secret**: The `JWT_SECRET` variable should contain a secure, random string used to sign JSON Web Tokens.
-#### 5. Run Backend
-
-1. In the terminal, navigate to your project directory and run the following command to start the backend server:
-
-   ```bash
-   node server.js
-#### 6. Access the App
-
-- **Frontend**: Open the `.html` files from `client/pages/` in your browser:
-   - `C:\\StudentPortal\\client\\pages\\student.html`
-   - `C:\\StudentPortal\\client\\pages\\teacher.html`
-
-- **Backend API**: The backend API will be accessible at:
-
----
+1. Transfer project folder to your Oracle VM.
+2. Install dependencies (`npm install`).
+3. Ensure MySQL server is running and database exists.
+4. Verify `.env` credentials.
+5. Start server: `node server.js`.
 
 ### 🔧 Maintenance Guidelines
 
-| Task                        | Frequency        | Tool/Notes                                   |
-|-----------------------------|------------------|----------------------------------------------|
-| 🔁 **Restart Node Server**   | As needed        | Use `pm2 restart server` or restart manually. |
-| 🧪 **Test API Endpoints**    | After updates    | Use **Postman** to test API endpoints.       |
-| 💾 **Database Backup**       | Daily/Weekly     | Use **MySQL Workbench** or a custom script for backups. |
-| 🧼 **Clear Uploaded Files**  | Monthly          | Clean up manually or set up a cleanup script. |
-| 🔒 **Update Dependencies**   | Bi-monthly       | Run `npm outdated` and `npm update` to update outdated dependencies. |
-| 🔍 **Log & Error Monitoring**| Continuous       | Use `console.log()` or integrate with tools like **Winston** or **Sentry** for error monitoring. |
-
-
----
-
+| Task                        | Frequency        | Notes                                        |
+| --------------------------- | ---------------- | -------------------------------------------- |
+| Restart Node Server         | As needed        | Use `pm2 restart server` or manual restart. |
+| Test API Endpoints          | After updates    | Use Postman for verification.               |
+| Database Backup             | Daily/Weekly     | Via MySQL Workbench or custom script.       |
+| Clear Uploaded Files        | Monthly          | Manual or automated cleanup.                |
+| Update Dependencies         | Bi-monthly       | Run `npm outdated` and `npm update`.        |
+| Log & Error Monitoring      | Continuous       | Integrate Winston or Sentry.                |
 
 ## 🧑‍💻 Usage
 
 ### For Students
-- Login/Register to access your dashboard.
-- View Marks, Attendance, Timetable & Faculty Info.
-- Download Study Materials and Upload Assignments under Courses.
+- Register/Login
+- View Marks, Attendance, Timetable & Faculty Info
+- Download Study Materials and Upload Assignments
 
 ### For Teachers
-- Login to manage your dashboard.
-- Upload Marks, Attendance, Study Materials.
-- Make Announcements for students.
+- Login to Dashboard
+- Upload Marks, Attendance, Study Materials
+- Make Announcements to Class
 
 ### For Admins
-- Manage Users, Courses & Sections.
-- View dashboards with academic data and system stats.
+- Manage Users, Courses & Sections
+- View Analytics and System Stats
 
 > **Note**: All actions update in real-time.  
 > **Supported file uploads**: PDF, DOCX, PPT.
 
----
-
 ## 📸 Screenshots & UI/UX
-
-Below are demo screenshots showcasing key aspects of Progress Path.  
-Replace the image file names with your actual screenshots.
-
-<div align="center"> 
-<img src="/Readme/sc1.png" alt="Demo Screenshot 1" width="300" style="margin: 10px;"> 
-<img src="/Readme/sc2.png" alt="Demo Screenshot 2" width="300" style="margin: 10px;"><br> 
-<img src="/Readme/sc3.png" alt="Demo Screenshot 3" width="300" style="margin: 10px;"> 
-<img src="/Readme/sc4.png" alt="Demo Screenshot 4" width="300" style="margin: 10px;"> 
-</div>
-
----
+<p align="center">
+  <img src="Readme/sc1.png" alt="Screenshot 1" width="300">
+  <img src="Readme/sc2.png" alt="Screenshot 2" width="300"><br>
+  <img src="Readme/sc3.png" alt="Screenshot 3" width="300">
+  <img src="Readme/sc4.png" alt="Screenshot 4" width="300">
+</p>
 
 ## 🔒 Security Highlights
 - Role-Based Access Control (Student/Teacher/Admin)
-- Data encryption (HTTPS, hashed passwords)
-- Session timeout after inactivity
-- Auto backup + recovery system
-
----
+- HTTPS & Hashed Passwords
+- Session Timeouts
+- Automated Backups & Recovery
 
 ## 🧠 Future Enhancements
-- Scalable over other departments
-- AI-based performance insights
-- Attendance tracking
-- Student-parent portal
-- Dark mode support
-
----
+- Departmental Scalability
+- AI-Powered Performance Insights
+- Attendance Tracking
+- Student-Parent Portal
+- Dark Mode Support
 
 ## 👥 Contributors
--**Ruchi Shaktawat**
+- **Ruchi Shaktawat**  
 - **Ayushi Yadav**  
 - **Kritika Bhati**  
 
-**Contact 📞**:  
+**Contact**:  
 ruchishaktawat5@gmail.com | ayushipramodsingh@gmail.com | kritikabhati24@gmail.com
-
-

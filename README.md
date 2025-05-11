@@ -320,10 +320,10 @@ Below are demo screenshots showcasing key aspects of Progress Path.
 Replace the image file names with your actual screenshots.
 
 <div align="center"> 
-  <img src="sc1.png" alt="Demo Screenshot 1" width="300" style="margin: 10px;"> 
-  <img src="sc2.png" alt="Demo Screenshot 2" width="300" style="margin: 10px;"><br> 
-  <img src="sc3.png" alt="Demo Screenshot 3" width="300" style="margin: 10px;"> 
-  <img src="sc4.png" alt="Demo Screenshot 4" width="300" style="margin: 10px;"> 
+<img src="/Readme/sc1.png" alt="Demo Screenshot 1" width="300" style="margin: 10px;"> 
+<img src="/Readme/sc2.png" alt="Demo Screenshot 2" width="300" style="margin: 10px;"><br> 
+<img src="/Readme/sc3.png" alt="Demo Screenshot 3" width="300" style="margin: 10px;"> 
+<img src="/Readme/sc4.png" alt="Demo Screenshot 4" width="300" style="margin: 10px;"> 
 </div>
 
 ---
